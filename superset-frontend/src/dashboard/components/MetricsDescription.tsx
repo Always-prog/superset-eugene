@@ -24,6 +24,9 @@ const StyledMenuItem = styled(Menu.Item)`
   ${({ theme }) => `
   padding: 5px;
   color: ${theme.colors.grayscale.light4};
+  width: 500px;
+  overflow: hidden;
+  text-wrap: pretty;
 `}
 `;
 
