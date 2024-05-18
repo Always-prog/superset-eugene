@@ -19,7 +19,13 @@
 import cx from 'classnames';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { styled, t, logging } from '@superset-ui/core';
+import {
+  styled,
+  t,
+  logging,
+  getChartMetrics,
+  getMetricLabel,
+} from '@superset-ui/core';
 import { debounce, isEqual } from 'lodash';
 import { withRouter } from 'react-router-dom';
 
@@ -421,6 +427,14 @@ class Chart extends React.Component {
       queriesResponse?.map(({ cached_dttm }) => cached_dttm) || [];
     const initialValues = {};
 
+    const datasourceMetrics = Object.fromEntries(
+      datasource.metrics.map(metric => [metric.metric_name, metric]),
+    );
+    const datasourceMetricsUsed = getChartMetrics(formData)
+      .map(getMetricLabel)
+      .map(metric => datasourceMetrics[metric])
+      .filter(metric => metric);
+
     return (
       <SliceContainer
         className="chart-slice"
@@ -460,6 +474,7 @@ class Chart extends React.Component {
           handleToggleFullSize={handleToggleFullSize}
           isFullSize={isFullSize}
           chartStatus={chart.chartStatus}
+          metricsUsed={datasourceMetricsUsed}
           formData={formData}
           width={width}
           height={this.getHeaderHeight()}

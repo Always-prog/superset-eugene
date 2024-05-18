@@ -37,6 +37,7 @@ import Icons from 'src/components/Icons';
 import { RootState } from 'src/dashboard/types';
 import { getSliceHeaderTooltip } from 'src/dashboard/util/getSliceHeaderTooltip';
 import { DashboardPageIdContext } from 'src/dashboard/containers/DashboardPage';
+import MetricsDescription from '../MetricsDescription';
 
 const extensionsRegistry = getExtensionsRegistry();
 
@@ -162,6 +163,7 @@ const SliceHeader: FC<SliceHeaderProps> = ({
   formData,
   width,
   height,
+  metricsUsed,
 }) => {
   const SliceHeaderExtension = extensionsRegistry.get('dashboard.slice.header');
   const uiConfig = useUiConfig();
@@ -260,6 +262,9 @@ const SliceHeader: FC<SliceHeaderProps> = ({
             )}
             {!uiConfig.hideChartControls && (
               <FiltersBadge chartId={slice.slice_id} />
+            )}
+            {!!metricsUsed.length && (
+              <MetricsDescription metrics={metricsUsed} />
             )}
             {!uiConfig.hideChartControls && (
               <SliceHeaderControls
