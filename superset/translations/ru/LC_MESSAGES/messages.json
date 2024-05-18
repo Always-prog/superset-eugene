@@ -5,7 +5,7 @@
       "22": ["22"],
       "": {
         "domain": "superset",
-        "plural_forms": "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2)",
+        "plural_forms": "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);",
         "lang": "ru"
       },
       "\n                This filter was inherited from the dashboard's context.\n                It won't be saved when saving the chart.\n              ": [
@@ -72,6 +72,7 @@
       "%s Selected (Virtual)": ["%s Выбрано (Виртуальные)"],
       "%s aggregates(s)": ["Агрегатных функций: %s"],
       "%s column(s)": ["Столбцов: %s"],
+      "%s ineligible item(s) are hidden": [""],
       "%s items could not be tagged because you don’t have edit permissions to all selected objects.": [
         ""
       ],
@@ -188,10 +189,11 @@
       "A comma-separated list of schemas that files are allowed to upload to.": [
         "Разделённый запятыми список схем, в которые можно загружать файлы."
       ],
+      "A database port is required when connecting via SSH Tunnel.": [""],
       "A database with the same name already exists.": [
         "База данных с таким же именем уже существует"
       ],
-      "A dictionary with column names and their data types if you need to change the defaults. Example: {\"user_id\":\"integer\"}": [
+      "A dictionary with column names and their data types if you need to change the defaults. Example: {\"user_id\":\"int\"}. Check Python's Pandas library for supported data types.": [
         ""
       ],
       "A full URL pointing to the location of the built plugin (could be hosted on a CDN for example)": [
@@ -327,7 +329,6 @@
       ],
       "Add new color formatter": ["Добавить цветовое форматирование"],
       "Add new formatter": ["Добавить форматирование"],
-      "Add notification method": ["Добавить способ уведомления"],
       "Add required control values to preview chart": [
         "Добавьте обязательные значения для предпросмотра графика"
       ],
@@ -383,7 +384,6 @@
         "Оповещение сработало во время перерыва"
       ],
       "Alert condition": ["Условие оповещения"],
-      "Alert condition schedule": ["Расписание условия оповещения"],
       "Alert ended grace period.": ["У оповещения закончился перерыв."],
       "Alert failed": ["Оповещение не сработало"],
       "Alert fired during grace period.": [
@@ -739,7 +739,6 @@
         "Вы уверены, что хотите сохранить и применить изменения?"
       ],
       "Area Chart": ["Диаграмма с областями"],
-      "Time-series Area Chart (legacy)": ["Диаграмма с областями (устарело)"],
       "Area chart": ["Диаграмма с областями"],
       "Area chart opacity": ["Непрозрачность диаграммы с областями"],
       "Area charts are similar to line charts in that they represent variables with the same scale, but area charts stack the metrics on top of each other.": [
@@ -1372,6 +1371,7 @@
         ""
       ],
       "Customize columns": ["Настроить столбцы"],
+      "Customize data source, filters, and layout.": [""],
       "Cyclic dependency detected": ["Обнаружена циклическая зависимость"],
       "D3 Format": ["Формат даты/времени"],
       "D3 format": ["Формат даты/времени"],
@@ -1414,7 +1414,6 @@
       ],
       "Dashboard title": ["Название дашборда"],
       "Dashboards": ["Дашборды"],
-      "Dashboards added to": ["Добавлено в дашборды"],
       "Dashboards do not exist": ["Дашборды не существуют"],
       "Dashed": ["Штрих"],
       "Data": ["Данные"],
@@ -1572,6 +1571,10 @@
         "Определите функцию javascript, которая получает массив данных, используемый в визуализации, и, как ожидается, вернет измененную версию этого массива. Это может быть использовано для изменения свойств данных, фильтрации или расширения массива."
       ],
       "Define contour layers. Isolines represent a collection of line segments that serparate the area above and below a given threshold. Isobands represent a collection of polygons that fill the are containing values in a given threshold range.": [
+        ""
+      ],
+      "Define delivery schedule, timezone, and frequency settings.": [""],
+      "Define the database, SQL query, and triggering conditions for alert.": [
         ""
       ],
       "Defines a rolling window function to apply, works along with the [Periods] text box": [
@@ -2485,7 +2488,6 @@
       "Light": ["Светлый"],
       "Light mode": ["Светлый режим"],
       "Like": [""],
-      "Limit reached": ["Достигнут предел"],
       "Limit type": ["Тип ограничения"],
       "Limiting rows may result in incomplete data and misleading charts. Consider filtering or grouping source/target names instead.": [
         ""
@@ -2504,7 +2506,6 @@
       ],
       "Line": ["Линейный"],
       "Line Chart": ["Линейный график"],
-      "Time-series Line Chart (legacy)": ["Линейный график (устарело)"],
       "Line Style": ["Тип линии"],
       "Line chart is used to visualize measurements taken over a given category. Line chart is a type of chart which displays information as a series of data points connected by straight line segments. It is a basic type of chart common in many fields.": [
         "Линейная диаграмма используется для визуализации показателей, полученных в рамках одной категории. Линейная диаграмма - это тип диаграммы, который отображает информацию в виде ряда точек данных, соединенных прямыми отрезками. Это базовый тип диаграммы, распространенный во многих областях."
@@ -2840,6 +2841,9 @@
       "Normalized": ["Нормализовать"],
       "Not Time Series": ["Не временные ряды"],
       "Not added to any dashboard": ["Не добавлен ни в один дашборд"],
+      "Not all required fields are complete. Please provide the following:": [
+        ""
+      ],
       "Not available": ["Не доступно"],
       "Not equal to (≠)": ["Не равно (≠)"],
       "Not null": ["Не пусто"],
@@ -3059,6 +3063,7 @@
       "Percent Change": ["Процентное изменение"],
       "Percentage": ["Процентная доля"],
       "Percentage change": ["Процентное изменение"],
+      "Percentage difference between the time periods": [""],
       "Percentage metrics": ["Процентные меры"],
       "Percentage threshold": ["Процентный порог"],
       "Percentages": ["Проценты"],
@@ -3281,6 +3286,7 @@
       "Recommended tags": ["Рекомендованные теги"],
       "Record Count": ["Кол-во записей"],
       "Rectangle": ["Прямоугольник"],
+      "Recurring (every)": [""],
       "Redirects to this endpoint when clicking on the table from the table list": [
         ""
       ],
@@ -3354,7 +3360,6 @@
       "Report a bug": ["Сообщить об ошибке"],
       "Report failed": ["Рассылка не удалась"],
       "Report name": ["Имя отчета"],
-      "Report schedule": ["Расписание отчета"],
       "Report schedule client error": [
         "Возникла ошибка расписания отчета на стороне клиента"
       ],
@@ -3379,7 +3384,6 @@
         "Обязательные значения были удалены"
       ],
       "Resample": ["Ресемплирование (изменение частоты данных)"],
-      "Resample method should in ": [""],
       "Resample operation requires DatetimeIndex": [
         "Для ресемплирования требуется индекс формата дата/время"
       ],
@@ -3551,7 +3555,6 @@
       "Schedule a new email report": ["Запланировать новую рассылку по почте"],
       "Schedule email report": ["Запланировать рассылку по почте"],
       "Schedule query": ["Сохранить запрос"],
-      "Schedule settings": ["Настройки расписания"],
       "Schedule the query periodically": [
         "Запланировать периодическое выполнение запроса"
       ],
@@ -3699,7 +3702,11 @@
       "Service Account": ["Сервисный аккаунт"],
       "Set auto-refresh interval": ["Задать интервал обновления"],
       "Set filter mapping": ["Установить действие фильтра"],
+      "Set the time range that will be used for the comparison metrics. For example, \"Year\" will compare to the same dates one year earlier. Use \"Inherit range from time filters\" to shift the comparison time rangeby the same length as your time range and use \"Custom\" to set a custom comparison range.": [
+        ""
+      ],
       "Set up an email report": ["Запланировать рассылку по почте"],
+      "Set up basic details, such as name and description.": [""],
       "Sets the hierarchy levels of the chart. Each level is\n        represented by one ring with the innermost circle as the top of the hierarchy.": [
         ""
       ],
@@ -3734,7 +3741,6 @@
       "Show Dashboard": ["Показать дашборд"],
       "Show Database": ["Показать базу данных"],
       "Show Labels": ["Показывать метки"],
-      "Show Less...": ["Показать меньше..."],
       "Show Log": ["Показать запись"],
       "Show Markers": ["Показать маркеры"],
       "Show Metric": ["Показатель меру"],
@@ -4291,7 +4297,9 @@
         "Радиус маркеров (не находящихся в кластере). Выберите числовой столбец или `Автоматически`, который отмасштабирует маркеры по наибольшему маркеру."
       ],
       "The report has been created": ["Рассылка создана"],
-      "The result of this query should be a numeric-esque value": [""],
+      "The result of this query must be a value capable of numeric interpretation e.g. 1, 1.0, or \"1\" (compatible with Python's float() function).": [
+        ""
+      ],
       "The results backend no longer has the data from the query.": [
         "Сервер не сохранил данные из этого запроса."
       ],
@@ -4300,6 +4308,9 @@
       ],
       "The rich tooltip shows a list of all series for that point in time": [
         "Расширенная всплывающая подсказка показывает список всех категорий для этой точки."
+      ],
+      "The row limit set for the chart was reached. The chart may show partial data.": [
+        ""
       ],
       "The schema \"%(schema)s\" does not exist. A valid schema must be used to run this query.": [
         ""
@@ -4679,6 +4690,7 @@
       "Time string is ambiguous. Please specify [%(human_readable)s ago] or [%(human_readable)s later].": [
         "Временная строка неоднозначна. Пожалуйста, укажите [%(human_readable)s до] или [%(human_readable)s после]."
       ],
+      "Time-series Area Chart (legacy)": ["Диаграмма с областями (устарело)"],
       "Time-series Bar Chart (legacy)": ["Столбчатая диаграмма (устарело)"],
       "Time-series Percent Change": ["Процентное изменение (временные ряды)"],
       "Time-series Table": ["Таблица временных рядов"],
@@ -4901,6 +4913,7 @@
       "Used internally to identify the plugin. Should be set to the package name from the pluginʼs package.json": [
         ""
       ],
+      "Used metrics list": ["Список использованных показателей"],
       "Used to summarize a set of data by grouping together multiple statistics along two axes. Examples: Sales numbers by region and month, tasks by status and assignee, active users by age and location. Not the most visually stunning visualization, but highly informative and versatile.": [
         "Используется для обобщения набора данных путем группировки нескольких показателей по двум осям. Примеры: показатели продаж по регионам и месяцам, задачи по статусу и назначенному лицу, активные пользователи по возрасту и местоположению."
       ],
@@ -4927,6 +4940,7 @@
       "Value Format": ["Формат значения"],
       "Value bounds": ["Ограничения для значения"],
       "Value cannot exceed %s": [""],
+      "Value difference between the time periods": [""],
       "Value format": ["Формат значения"],
       "Value is required": ["Значение обязательно"],
       "Value must be greater than 0": ["Значение должно быть больше 0"],
@@ -5430,7 +5444,9 @@
       ],
       "`operation` property of post processing object undefined": [""],
       "`prophet` package not installed": [""],
-      "`rename_columns` must have the same length as `columns`.": [""],
+      "`rename_columns` must have the same length as `columns` + `time_shift_columns`.": [
+        ""
+      ],
       "`row_limit` must be greater than or equal to 0": [""],
       "`row_offset` must be greater than or equal to 0": [""],
       "`width` must be greater or equal to 0": [""],
@@ -5442,7 +5458,6 @@
         "также копировать (дублировать) графики"
       ],
       "ancestor": ["предок"],
-      "and": ["и"],
       "annotation": ["аннотация"],
       "annotation_layer": ["слой_аннотации"],
       "asfreq": ["asfreq (без изменения)"],
