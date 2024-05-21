@@ -1,7 +1,7 @@
 import { Metric, styled, t } from '@superset-ui/core';
+import Icons from 'src/components/Icons';
 import { Dropdown, Menu, Space } from 'antd';
 import React from 'react';
-import { ColumnTypeLabel } from '@superset-ui/chart-controls';
 
 const ExpressionIconContainer = styled('span')`
   ${({ theme }) => `
@@ -45,7 +45,7 @@ export default function MetricsDescription({ metrics }: { metrics: Metric[] }) {
     <Dropdown overlay={menu}>
       <Space>
         <ExpressionIconContainer>
-          <ColumnTypeLabel type="expression" />
+          <Icons.QuestionCircleOutlined />
         </ExpressionIconContainer>
       </Space>
     </Dropdown>
