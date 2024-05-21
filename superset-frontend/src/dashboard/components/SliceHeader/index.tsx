@@ -24,7 +24,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { css, getExtensionsRegistry, styled, t } from '@superset-ui/core';
+import { Metric, css, getExtensionsRegistry, styled, t } from '@superset-ui/core';
 import { useUiConfig } from 'src/components/UiConfigContext';
 import { Tooltip } from 'src/components/Tooltip';
 import { useSelector } from 'react-redux';
@@ -53,6 +53,7 @@ type SliceHeaderProps = SliceHeaderControlsProps & {
   formData: object;
   width: number;
   height: number;
+  metricsUsed: Metric[];
 };
 
 const annotationsLoading = t('Annotation layers are still loading.');
