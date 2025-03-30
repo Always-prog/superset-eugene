@@ -24,7 +24,13 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { Metric, css, getExtensionsRegistry, styled, t } from '@superset-ui/core';
+import {
+  Metric,
+  css,
+  getExtensionsRegistry,
+  styled,
+  t,
+} from '@superset-ui/core';
 import { useUiConfig } from 'src/components/UiConfigContext';
 import { Tooltip } from 'src/components/Tooltip';
 import { useSelector } from 'react-redux';
