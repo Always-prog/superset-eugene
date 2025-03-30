@@ -19410,3 +19410,9 @@ msgstr ""
 #: superset-frontend/plugins/plugin-chart-echarts/src/Timeseries/transformProps.ts:594
 msgid "zoom area"
 msgstr ""
+
+msgid "Threshold for billions (1B => 1000 (млн), 1M => 1000 (тыс))"
+msgstr ""
+
+msgid "Business unit"
+msgstr ""
