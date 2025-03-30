@@ -208,6 +208,7 @@ function DashboardList(props: DashboardListProps) {
                 changed_on_delta_humanized,
                 url = '',
                 certified_by = '',
+                business_unit = '',
                 certification_details = '',
                 owners,
                 tags,
@@ -221,6 +222,7 @@ function DashboardList(props: DashboardListProps) {
                 json_metadata,
                 changed_on_delta_humanized,
                 url,
+                business_unit,
                 certified_by,
                 certification_details,
                 owners,
@@ -311,6 +313,16 @@ function DashboardList(props: DashboardListProps) {
         ),
         Header: t('Name'),
         accessor: 'dashboard_title',
+      },
+      {
+        Cell: ({
+          row: {
+            original: { business_unit },
+          },
+        }: any) => business_unit,
+        Header: t('Business unit'),
+        accessor: 'business_unit',
+        size: 'xs',
       },
       {
         Cell: ({

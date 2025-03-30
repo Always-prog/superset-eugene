@@ -163,6 +163,7 @@ class DashboardRestApi(BaseSupersetModelRestApi):
         "position_json",
         "json_metadata",
         "thumbnail_url",
+        "business_unit",
         "certified_by",
         "certification_details",
         "changed_by.first_name",
@@ -198,6 +199,7 @@ class DashboardRestApi(BaseSupersetModelRestApi):
     ]
 
     add_columns = [
+        "business_unit"
         "certified_by",
         "certification_details",
         "dashboard_title",

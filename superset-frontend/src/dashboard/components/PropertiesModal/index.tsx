@@ -86,6 +86,7 @@ type DashboardInfo = {
   title: string;
   slug: string;
   certifiedBy: string;
+  businessUnit: string;
   certificationDetails: string;
   isManagedExternally: boolean;
 };
@@ -174,6 +175,7 @@ const PropertiesModal = ({
         dashboard_title,
         slug,
         certified_by,
+        business_unit,
         certification_details,
         owners,
         roles,
@@ -185,6 +187,7 @@ const PropertiesModal = ({
         title: dashboard_title,
         slug: slug || '',
         certifiedBy: certified_by || '',
+        businessUnit: business_unit || '',
         certificationDetails: certification_details || '',
         isManagedExternally: is_managed_externally || false,
       };
@@ -345,7 +348,7 @@ const PropertiesModal = ({
   };
 
   const onFinish = () => {
-    const { title, slug, certifiedBy, certificationDetails } =
+    const { title, slug, businessUnit, certifiedBy, certificationDetails } =
       form.getFieldsValue();
     let currentColorScheme = colorScheme;
     let colorNamespace = '';
@@ -434,6 +437,7 @@ const PropertiesModal = ({
       owners,
       colorScheme: currentColorScheme,
       colorNamespace,
+      businessUnit,
       certifiedBy,
       certificationDetails,
       ...moreOnSubmitProps,
@@ -451,6 +455,7 @@ const PropertiesModal = ({
           slug: slug || null,
           json_metadata: currentJsonMetadata || null,
           owners: (owners || []).map(o => o.id),
+          business_unit: businessUnit || null,
           certified_by: certifiedBy || null,
           certification_details:
             certifiedBy && certificationDetails ? certificationDetails : null,
@@ -725,6 +730,13 @@ const PropertiesModal = ({
             <p className="help-block">
               {t('Any additional detail to show in the certification tooltip.')}
             </p>
+          </Col>
+        </Row>
+        <Row gutter={16}>
+          <Col xs={24} md={12}>
+            <StyledFormItem label={t('Business unit')} name="businessUnit">
+              <Input type="text" disabled={isLoading} />
+            </StyledFormItem>
           </Col>
         </Row>
         {isFeatureEnabled(FeatureFlag.TaggingSystem) ? (
