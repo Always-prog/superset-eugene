@@ -26,6 +26,8 @@ import os
 from celery.schedules import crontab
 from flask_caching.backends.filesystemcache import FileSystemCache
 
+from superset.tasks.types import ExecutorType
+
 logger = logging.getLogger()
 
 DATABASE_DIALECT = os.getenv("DATABASE_DIALECT")
@@ -70,6 +72,23 @@ CACHE_CONFIG = {
     "CACHE_REDIS_DB": REDIS_RESULTS_DB,
 }
 DATA_CACHE_CONFIG = CACHE_CONFIG
+LANGUAGES = {
+    "en": {"flag": "us", "name": "English"},
+    "es": {"flag": "es", "name": "Spanish"},
+    "it": {"flag": "it", "name": "Italian"},
+    "fr": {"flag": "fr", "name": "French"},
+    "zh": {"flag": "cn", "name": "Chinese"},
+    "ja": {"flag": "jp", "name": "Japanese"},
+    "de": {"flag": "de", "name": "German"},
+    "pt": {"flag": "pt", "name": "Portuguese"},
+    "pt_BR": {"flag": "br", "name": "Brazilian Portuguese"},
+    "ru": {"flag": "ru", "name": "Russian"},
+    "ko": {"flag": "kr", "name": "Korean"},
+    "sk": {"flag": "sk", "name": "Slovak"},
+    "sl": {"flag": "si", "name": "Slovenian"},
+    "nl": {"flag": "nl", "name": "Dutch"},
+    "uk": {"flag": "uk", "name": "Ukranian"},
+}
 
 
 class CeleryConfig:
@@ -92,11 +111,43 @@ class CeleryConfig:
 
 CELERY_CONFIG = CeleryConfig
 
-FEATURE_FLAGS = {"ALERT_REPORTS": True}
+FEATURE_FLAGS = {"ALERT_REPORTS": True, "THUMBNAILS": True}
 ALERT_REPORTS_NOTIFICATION_DRY_RUN = True
 WEBDRIVER_BASEURL = "http://superset:8088/"
 # The base URL for the email report hyperlinks.
 WEBDRIVER_BASEURL_USER_FRIENDLY = WEBDRIVER_BASEURL
+
+
+THUMBNAIL_CACHE_CONFIG = {
+    'CACHE_TYPE': 'RedisCache',
+    'CACHE_DEFAULT_TIMEOUT': 7* 86400, # 7 days
+    'CACHE_KEY_PREFIX': 'thumbnail_',
+    # 'CACHE_NO_NULL_WARNING': True,
+    'CACHE_REDIS_HOST': REDIS_HOST,
+    'CACHE_REDIS_PORT': REDIS_PORT,
+    'CACHE_REDIS_DB': REDIS_CELERY_DB
+}
+# Async selenium thumbnail task will use the following user
+THUMBNAIL_SELENIUM_USER = 'admin'
+THUMBNAIL_EXECUTE_AS = [ExecutorType.SELENIUM]
+
+WEBDRIVER_TYPE = "firefox"
+
+WEBDRIVER_BASEURL = 'http://172.30.226.76:9000'
+WEBDRIVER_OPTION_ARGS = [
+        "--force-device-scale-factor=2.0",
+        "--high-dpi-support=2.0",
+        "--headless",
+        "--disable-gpu",
+        "--disable-dev-shm-usage",
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-extensions",
+        ]
+
+SCREENSHOT_LOCATE_WAIT = 1000
+SCREENSHOT_LOAD_WAIT = 2000
+
 
 SQLLAB_CTAS_NO_LIMIT = True
 

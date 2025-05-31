@@ -46,7 +46,7 @@ fi
 case "${1}" in
   worker)
     echo "Starting Celery worker..."
-    celery --app=superset.tasks.celery_app:app worker -O fair -l INFO
+    celery --app=superset.tasks.celery_app:app worker -O fair -l INFO --concurrency 5
     ;;
   beat)
     echo "Starting Celery beat..."
