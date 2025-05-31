@@ -548,7 +548,7 @@ export default function transformProps(
           if (value.observation === 0 && stack) {
             return;
           }
-          const originalNumberFormatter = getNumberFormatter('d');
+          const originalNumberFormatter = getNumberFormatter(',d');
 
           // if there are no dimensions, key is a verbose name of a metric,
           // otherwise it is a comma separated string where the first part is metric name
@@ -570,7 +570,12 @@ export default function transformProps(
           });
           const contentStyle =
             key === focusedSeries ? 'font-weight: 700' : 'opacity: 0.7';
-          rows.push(`<span style="${contentStyle}">${content}</span>`);
+          rows.push(
+            `<span style="${contentStyle}">${content.replaceAll(
+              ',',
+              ' ',
+            )}</span>`,
+          );
         });
         if (stack) {
           rows.reverse();
