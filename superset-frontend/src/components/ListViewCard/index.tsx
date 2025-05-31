@@ -255,7 +255,7 @@ function ListViewCard({
             <TitleContainer>
               {subtitle || null}
               <div className="titleRow">
-                <Tooltip title={title}>
+                <Tooltip title={certificationDetails}>
                   <TitleLink>
                     {certifiedBy && (
                       <>
