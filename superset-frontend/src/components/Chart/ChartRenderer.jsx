@@ -63,6 +63,7 @@ const propTypes = {
   postTransformProps: PropTypes.func,
   source: PropTypes.oneOf([ChartSource.Dashboard, ChartSource.Explore]),
   emitCrossFilters: PropTypes.bool,
+  extraChartControls: PropTypes.object,
 };
 
 const BLANK = {};
@@ -158,7 +159,8 @@ class ChartRenderer extends React.Component {
         nextProps.formData.color_scheme !== this.props.formData.color_scheme ||
         nextProps.formData.stack !== this.props.formData.stack ||
         nextProps.cacheBusterProp !== this.props.cacheBusterProp ||
-        nextProps.emitCrossFilters !== this.props.emitCrossFilters
+        nextProps.emitCrossFilters !== this.props.emitCrossFilters ||
+        !isEqual(nextProps.extraChartControls, this.props.extraChartControls)
       );
     }
     return false;
@@ -243,7 +245,13 @@ class ChartRenderer extends React.Component {
   }
 
   render() {
-    const { chartAlert, chartStatus, chartId, emitCrossFilters } = this.props;
+    const {
+      chartAlert,
+      chartStatus,
+      chartId,
+      emitCrossFilters,
+      extraChartControls,
+    } = this.props;
 
     // Skip chart rendering
     if (chartStatus === 'loading' || !!chartAlert || chartStatus === null) {
@@ -361,6 +369,7 @@ class ChartRenderer extends React.Component {
             noResults={noResultsComponent}
             postTransformProps={postTransformProps}
             emitCrossFilters={emitCrossFilters}
+            extraChartControls={extraChartControls}
             legendState={this.state.legendState}
             {...drillToDetailProps}
           />

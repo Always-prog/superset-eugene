@@ -36,6 +36,7 @@ import {
   getAppliedFilterValues,
 } from 'src/dashboard/util/activeDashboardFilters';
 import getFormDataWithExtraFilters from 'src/dashboard/util/charts/getFormDataWithExtraFilters';
+import getExtraChartControlsWithExtraFilters from 'src/dashboard/util/charts/getExtraChartControlsWithExtraFilters';
 import Chart from 'src/dashboard/components/gridComponents/Chart';
 import { PLACEHOLDER_DATASOURCE } from 'src/dashboard/constants';
 
@@ -78,6 +79,17 @@ function mapStateToProps(
     labelColors,
     sharedLabelColors,
   });
+  const extraChartControls = getExtraChartControlsWithExtraFilters({
+    chart,
+    chartConfiguration: dashboardInfo.metadata?.chart_configuration,
+    nativeFilters: nativeFilters?.filters,
+    filters: getAppliedFilterValues(id),
+    sliceId: id,
+    dataMask,
+    allSliceIds: dashboardState.sliceIds,
+  });
+
+  // {y_axis_format: ',1%'}
 
   formData.dashboardId = dashboardInfo.id;
 
@@ -101,6 +113,7 @@ function mapStateToProps(
     setControlValue,
     datasetsStatus,
     emitCrossFilters: !!dashboardInfo.crossFiltersEnabled,
+    extraChartControls,
   };
 }
 

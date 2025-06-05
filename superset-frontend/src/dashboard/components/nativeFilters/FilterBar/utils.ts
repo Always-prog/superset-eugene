@@ -23,9 +23,17 @@ import { testWithId } from 'src/utils/testUtils';
 import { RootState } from 'src/dashboard/types';
 import { useSelector } from 'react-redux';
 
-export const getOnlyExtraFormData = (data: DataMaskStateWithId) =>
+export const getOnlyExtraFormDataAndExtraChartControls = (
+  data: DataMaskStateWithId,
+) =>
   Object.values(data).reduce(
-    (prev, next) => ({ ...prev, [next.id]: next.extraFormData }),
+    (prev, next) => ({
+      ...prev,
+      [next.id]: {
+        extraFormData: next.extraFormData,
+        ExtraChartControls: next.extraChartControls,
+      },
+    }),
     {},
   );
 
@@ -50,8 +58,8 @@ export const checkIsApplyDisabled = (
   const dataAppliedValues = Object.values(dataMaskApplied);
   return (
     areObjectsEqual(
-      getOnlyExtraFormData(dataMaskSelected),
-      getOnlyExtraFormData(dataMaskApplied),
+      getOnlyExtraFormDataAndExtraChartControls(dataMaskSelected),
+      getOnlyExtraFormDataAndExtraChartControls(dataMaskApplied),
       { ignoreUndefined: true },
     ) ||
     dataSelectedValues.length !== dataAppliedValues.length ||

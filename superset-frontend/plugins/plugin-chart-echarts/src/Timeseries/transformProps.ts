@@ -117,8 +117,8 @@ export default function transformProps(
     theme,
     inContextMenu,
     emitCrossFilters,
+    extraChartControls,
   } = chartProps;
-
   let focusedSeries: string | null = null;
 
   const {
@@ -133,6 +133,7 @@ export default function transformProps(
   const dataTypes = getColtypesMapping(queryData);
   const annotationData = getAnnotationData(chartProps);
 
+  const { number_format } = extraChartControls ?? {};
   const {
     area,
     annotationLayers,
@@ -183,7 +184,12 @@ export default function transformProps(
     yAxisTitleMargin,
     yAxisTitlePosition,
     zoomable,
-  }: EchartsTimeseriesFormData = { ...DEFAULT_FORM_DATA, ...formData };
+  }: EchartsTimeseriesFormData = {
+    ...DEFAULT_FORM_DATA,
+    ...formData,
+    ...{ yAxisFormat: number_format || formData.yAxisFormat },
+  };
+
   const refs: Refs = {};
   const groupBy = ensureIsArray(groupby);
   const labelMap = Object.entries(label_map).reduce((acc, entry) => {

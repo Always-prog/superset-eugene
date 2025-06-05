@@ -89,6 +89,7 @@ const propTypes = {
   datasetsStatus: PropTypes.oneOf(['loading', 'error', 'complete']),
   isInView: PropTypes.bool,
   emitCrossFilters: PropTypes.bool,
+  extraChartControls: PropTypes.object,
 };
 
 const defaultProps = {
@@ -408,6 +409,7 @@ class Chart extends React.Component {
       datasetsStatus,
       isInView,
       emitCrossFilters,
+      extraChartControls,
       logEvent,
     } = this.props;
 
@@ -533,6 +535,7 @@ class Chart extends React.Component {
             datasetsStatus={datasetsStatus}
             isInView={isInView}
             emitCrossFilters={emitCrossFilters}
+            extraChartControls={extraChartControls}
           />
         </ChartWrapper>
       </SliceContainer>
